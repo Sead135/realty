@@ -12,7 +12,7 @@ window.addEventListener("scroll", scrollHeader);
 const swiperPopular = new Swiper(".popular__container", {
   spaceBetween: 32,
   grabCursor: true,
-  slidesPerView: 'auto',
+  slidesPerView: "auto",
   centeredSlides: true,
   loop: true,
 
@@ -23,6 +23,33 @@ const swiperPopular = new Swiper(".popular__container", {
 });
 
 /*=============== VALUE ACCORDION ===============*/
+const accordionItem = document.querySelectorAll(".value__accordion-item");
+
+accordionItem.forEach((element) => {
+  const accordionHeader = element.querySelector(".value__accordion-header");
+
+  accordionHeader.addEventListener("click", () => {
+    const openItem = document.querySelector(".accordion-open");
+
+    toggleItem(element);
+
+    if (openItem && openItem != element) {
+      toggleItem(openItem);
+    }
+  });
+});
+
+const toggleItem = (item) => {
+  const accordionContent = item.querySelector(".value__accordion-content");
+
+  if (item.classList.contains("accordion-open")) {
+    accordionContent.removeAttribute("style");
+    item.classList.remove("accordion-open");
+  } else {
+    accordionContent.style.height = accordionContent.scrollHeight + "px";
+    item.classList.add("accordion-open");
+  }
+};
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
