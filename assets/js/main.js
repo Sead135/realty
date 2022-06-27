@@ -83,8 +83,9 @@ scrollUpButton.addEventListener("click", () => window.scrollTo(0, 0));
 /*=============== SHOW SCROLL UP ===============*/
 const scrollUp = () => {
   const scrollUp = document.getElementById("scroll-up");
-  if (this.scrollY >= 350) scrollUp.classList.add("show-scroll");
-  else scrollUp.classList.remove("show-scroll");
+  this.scrollY >= 350
+    ? scrollUp.classList.add("show-scroll")
+    : scrollUp.classList.remove("show-scroll");
 };
 
 window.addEventListener("scroll", scrollUp);
@@ -126,3 +127,20 @@ themeButton.addEventListener("click", () => {
 });
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr = ScrollReveal({
+  origin: "top",
+  distance: "60px",
+  duration: 2500,
+  delay: 400,
+});
+
+sr.reveal(
+  ".home__title, .popular__container, .subscribe__container, .footer__container"
+);
+sr.reveal(".home__description, .footer__info", { delay: 500 });
+sr.reveal(".home__search", { delay: 600 });
+sr.reveal(".home__value", { delay: 700 });
+sr.reveal(".home__images", { delay: 800, origin: "bottom" });
+sr.reveal(".logos__img", { interval: 100 });
+sr.reveal(".value__images, .contact__content", { origin: "left" });
+sr.reveal(".value__content, .contact__images", { origin: "right" });
